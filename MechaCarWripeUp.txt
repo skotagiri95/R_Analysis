@@ -1,0 +1,102 @@
+Multiple Linear Regression Written Analysis
+
+Summary:
+1.Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
+    
+    The vehicle.length, ground.clearance and intercept are the variables that are statistically unlikely to provide random amounts of variance to the linear model.
+    
+    
+2.Is the slope of the linear model considered to be zero? Why or why not?
+    
+    The slope of he linear is not considered to be zero because the P-value (2.277e-11) is less than assumed significance level (0.05). based on this, we can conclude that there is sufficient evidence to reject our null hypothesis. 
+    
+3.Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
+    
+    No. Because the r-squared value is 0.7032, which means approximetely 70% of all mpg predictions will be correct when using this multiple linear model.
+------------------------------------------------------------------------------------
+Multiple linear regression Model:
+
+  Predict a continuous dependent variable based on more independent variables fitted to the equation of a line.
+
+Output:
+  Call:
+  lm(formula = mpg ~ vehicle.length + vehicle.weight + spoiler.angle + 
+    ground.clearance, data = mechaCar_mpg)
+
+  Residuals:
+      Min       1Q   Median       3Q      Max 
+    -21.3395  -4.1155  -0.2094   6.8789  17.2672 
+
+  Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)    
+    (Intercept)      -1.076e+02  1.576e+01  -6.823 1.87e-08 ***
+    vehicle.length    6.240e+00  6.609e-01   9.441 3.05e-12 ***
+    vehicle.weight    1.277e-03  6.948e-04   1.837   0.0728 .  
+    spoiler.angle     8.031e-02  6.656e-02   1.207   0.2339    
+    ground.clearance  3.659e+00  5.394e-01   6.784 2.13e-08 ***
+  ---
+  Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+  Residual standard error: 8.853 on 45 degrees of freedom
+  Multiple R-squared:  0.7032,	Adjusted R-squared:  0.6768 
+  F-statistic: 26.65 on 4 and 45 DF,  p-value: 2.277e-11
+
+Conclusion:
+  1. From the information about each variable's Pr(>|t|) value, the vehicle.length,ground.clearance and intercept are the variables that are statistically unlikely to provide random amounts of variance to the linear model. 
+  2. According to the summary output, the r-squared value is 0.7032 with P-value (2.277e-11) is less than assumed significance level (0.05), we can state that there is sufficient evidence to reject our null hypothesis, which means that the slope of our linear model is not zero. 
+  3.There is a significant relationship between mpg and vehicle.length as well as ground.clearance. 
+  4.There is roughly 70% of all mpg predictions will be correct when using this multiple linear model.
+ 
+----------------------------------------------------------------------------------------------------
+
+Suspension Coil Summary
+
+The summary statistics table:
+
+  Mean_PSI | Median_PSI |  Variance_PSI | Stdev_PSI
+  -----------------------------------------------
+  1498.78	 |   1500	    |    62.29356	  |  7.892627
+
+The summary statistics group by three manufacturing Lot:
+
+	
+Manufacturing_Lot | Mean_PSI | Median_PSI | Variance_PSI | Stdev_PSI
+--------------------------------------------------------------------
+	Lot1	          | 1500.00	 |  1500.0	  | 0.9795918	   | 0.9897433
+--------------------------------------------------------------------
+	Lot2	          | 1500.20	 |  1500.0	  | 7.4693878	   | 2.7330181
+--------------------------------------------------------------------
+	Lot3	          | 1496.14	 |  1498.5	  | 170.2861224	 | 13.0493725
+	
+
+Conclusion:
+  The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per inch. 
+  The summary statistics table of whole data frame shows variance is 62.29356, which is not exceed 100 and meet the requirement of design specifications.
+  However, when we group dataset by three Manufacturing Lot, the variance of the suspension coils in Lot3 is 170.29 greater than 100. 
+ 
+----------------------------------------------------------------------------------------------------
+
+Suspension Coil T-Test
+
+Output:
+    One Sample t-test
+
+    data:  suspension_coil$PSI
+      t = -1.8931, df = 149, p-value = 0.06028
+    alternative hypothesis: true mean is not equal to 1500
+    95 percent confidence interval:
+    1497.507 1500.053
+    sample estimates:
+    mean of x 
+      1498.78 
+
+Conclusion: 
+
+      The P-value (0.06) is greater than presumed significance level (0.05) which means we do not have sufficient evidence to reject the null hypothesis. This is no statistically different from the mean population results of 1,500 pounds-per-inch.
+
+----------------------------------------------------------------------------------------------------
+
+New Study Design 
+  
+  
+The dataset can be improved by capturing engine size and tire size. Engine size and tire size directly correlate to fuel effiency and MPG. The information from the MechaCar prototypes will be available from the prototypes to provide data to support the correlation. The null hypothesis is that there is no statistical relationship between MechaCar engine size and tire size compard to the engine size and tire size of comparable vehicles. The alternative hypothesis is that there is a statistical relationship between engine size and tire size of MechaCar when comapred to other vehicles. Multiple data points are needed for different tire sizes and engine sizes. Utilizing correlation matrix, linear regresion and t-test analysis we could conclude if there is statistical evindence to support the hypothesis.
