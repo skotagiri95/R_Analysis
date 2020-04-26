@@ -18,9 +18,8 @@ ggplot(mechaCar_mpg,aes(mpg))+geom_density()
 # collect variables of interest from dataset into a metric
 matrix <- as.matrix(mechaCar_mpg[, c('mpg','vehicle.length', 'vehicle.weight','spoiler.angle','ground.clearance' )])
 
-# produce a correlation matrixu sing Pearson
+# produce a correlation matrix using Pearson
 cor(matrix)
-
 
 #---------Multiple Linear Regression model-------
 #summary(lm(mpg ~ vehicle.length + vehicle.weight + spoiler.angle + ground.clearance, data =mechaCar_mpg))
